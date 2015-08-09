@@ -1,0 +1,28 @@
+/* CSS for Class page */
+
+.class-title {
+    padding-left : 5px;
+    font-size : 1.5em;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+
+.lesson {
+	margin : 0px;
+}
+
+.lesson-menu {
+    height : 40px;
+    padding-top: 5px;
+    margin-bottom: 5px;
+}
+
+.study-lesson-header {
+    font-weight : bold;
+}
+
+.lesson-name {
+    font-weight : bold;
+    padding-left : 5px;
+}

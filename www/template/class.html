@@ -1,0 +1,43 @@
+ <div class="class container" ng-controller="ClassCtrl">
+
+	<!-- title -->
+	<div class="class-title">
+		 {{classId}} - {{lessonId}} - {{class.name}}
+	</div> <!-- title -->
+	
+	<div class="lesson" ng-controller="LessonCtrl">
+	
+		<!-- lesson menu -->
+		<div class="lesson-menu dropdown">
+			<!-- menu button -->
+			<button class="btn btn-default btn-sm dropdown-toggle" type="button" id="lessonMenu" data-toggle="dropdown" aria-expanded="true">
+				<span class="glyphicon glyphicon-th-list"></span>
+				<span class="lesson-header"> {{lesson.name}} </span>
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			</button>
+			<!-- short explanation of lesson -->
+			<span class="lesson-name"> {{lesson.snippet}} </span>
+			<!-- dropdown lesson menu -->
+			<ul class="dropdown-menu" role="menu" aria-labelledby="lessonMenu">
+				<li role="presentation" ng-repeat="lesson in class.lessons">
+					<a role="menuitem" tabindex="-1" ng-href="{{lesson.url}}">{{lesson.name}}: {{lesson.snippet}}</a>
+				</li>
+			</ul>
+			<!-- navigation button -->
+			<div class="right-align">
+				<button class="btn btn-default btn-sm" type="button" >
+					<span class="glyphicon glyphicon-chevron-left"></span>
+					Back
+				</button>
+				<button class="btn btn-default btn-sm" type="button" >
+					Next
+					<span class="glyphicon glyphicon-chevron-right"></span>
+				</button>
+			</div>
+		</div> <!-- lesson-menu -->
+		
+
+	</div> <!-- lesson -->
+			
+            
+</div> <!-- class -->

@@ -1,0 +1,58 @@
+/* CSS for HEADER */
+
+.header {
+    background-color :#337ab7;
+    color : white;
+    height : 30px;
+    margin-bottom : 10px;
+}
+
+.top-banner {
+    position: relative;
+    padding : 0px;
+}
+
+.top-banner img {
+    padding-left : 0px;
+    padding-top : 2px;
+    opacity : 0.9;
+}
+
+.top-menu {
+    display: inline-block;
+    position: absolute;
+    margin-top : 5px;
+    right : 0px;
+}
+
+.top-menu a {
+    padding-left : 15px;
+    color: white;
+    opacity : 0.8;
+}
+
+.top-menu a:hover {
+    text-decoration : none;
+    opacity : 1.0;
+}
+
+/* CSS for FOOTER */
+
+.footer {
+    margin-top : 150px;
+    height : 250px;
+    background-color : #337ab7;
+    color : white;
+    opacity : 0.8;
+}
+
+/* CSS for COmmon purpose */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.right-align {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+}
