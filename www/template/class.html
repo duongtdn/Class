@@ -20,7 +20,7 @@
 			<!-- dropdown lesson menu -->
 			<ul class="dropdown-menu" role="menu" aria-labelledby="lessonMenu">
 				<li role="presentation" ng-repeat="lesson in class.lessons">
-					<a role="menuitem" tabindex="-1" ng-href="{{lesson.url}}">{{lesson.name}}: {{lesson.snippet}}</a>
+					<a role="menuitem" tabindex="-1" ng-href="#/class/{{classId}}/{{lesson.url}}">{{lesson.name}}: {{lesson.snippet}}</a>
 				</li>
 			</ul>
 			<!-- navigation button -->

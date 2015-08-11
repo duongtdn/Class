@@ -3,12 +3,17 @@
 
 var hvmApp = angular.module('HVM',[
 	'ngRoute',
+	'classServiceModule',
 	'InterClass'
 ])
 .config(['$routeProvider', function($routeProvider) {
 	$routeProvider.
 		when('/schedule', {
 			templateUrl : 'template/body.html',
+			controller : 'ClassCtrl'
+		}).
+		when('/class/:classId', {
+			templateUrl : 'template/course.html',
 			controller : 'ClassCtrl'
 		}).
 		when('/class/:classId/:lessonId', {
