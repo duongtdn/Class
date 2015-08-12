@@ -12,11 +12,11 @@ var hvmApp = angular.module('HVM',[
 			templateUrl : 'template/body.html',
 			controller : 'ClassCtrl'
 		}).
-		when('/class/:classId', {
+		when('/class/:cid', {
 			templateUrl : 'template/course.html',
 			controller : 'ClassCtrl'
 		}).
-		when('/class/:classId/:lessonId', {
+		when('/class/:cid/:lid', {
 			templateUrl : 'template/class.html',
 			controller : 'ClassCtrl'
 		}).

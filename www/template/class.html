@@ -2,7 +2,7 @@
 
 	<!-- title -->
 	<div class="class-title">
-		 {{classId}} - {{lessonId}} - {{class.name}}
+		 {{course.name}}
 	</div> <!-- title -->
 	
 	<div class="lesson" ng-controller="LessonCtrl">
@@ -19,8 +19,8 @@
 			<span class="lesson-name"> {{lesson.snippet}} </span>
 			<!-- dropdown lesson menu -->
 			<ul class="dropdown-menu" role="menu" aria-labelledby="lessonMenu">
-				<li role="presentation" ng-repeat="lesson in class.lessons">
-					<a role="menuitem" tabindex="-1" ng-href="#/class/{{classId}}/{{lesson.url}}">{{lesson.name}}: {{lesson.snippet}}</a>
+				<li role="presentation" ng-repeat="lesson in course.lessons">
+					<a role="menuitem" tabindex="-1" ng-href="#/class/{{cid}}/{{lesson.lid}}">{{lesson.name}}: {{lesson.snippet}}</a>
 				</li>
 			</ul>
 			<!-- navigation button -->

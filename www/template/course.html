@@ -1,10 +1,10 @@
  <div class="class container" ng-controller="ClassCtrl">
 	<div class="class-title">
-		 Class ID is {{classId}} & Class name is {{class.name}}
+		 Class ID is {{cid}} & Class name is {{course.name}}
 	</div>
 	
-	<li ng-repeat = "lesson in class.lessons">
-		<a ng-href="#/class/{{classId}}/{{lesson.url}}" >Go to Lesson : {{lesson.name}}
+	<li ng-repeat = "lesson in course.lessons">
+		<a ng-href="#/class/{{cid}}/{{lesson.lid}}" >Go to Lesson : {{lesson.name}}
 	</li>
 	
  </div>

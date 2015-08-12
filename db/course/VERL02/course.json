@@ -1,0 +1,9 @@
+{
+	"name"    : "Verilog Advanced course",
+	"lessons" : [
+		{"lid" : "01", "name" : "Lesson 1", "snippet" : "The RTL Design"},
+		{"lid" : "02", "name" : "Lesson 2", "snippet" : "Good Design Practice"},
+		{"lid" : "03", "name" : "Lesson 3", "snippet" : "Testbench Design"},
+		{"lid" : "04", "name" : "Lesson 4", "snippet" : "Timing Closure Verification"}
+	]
+}

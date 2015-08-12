@@ -1,9 +1,11 @@
 
 // Function for lesson controller
 
-function LessonCtrl($scope){
-	$scope.lesson = {
-		name    : 'Lesson 01',
-		snippet : 'The Language, Concept and Data type'
-	}
+function LessonCtrl($scope, ClassServices){
+	
+	$scope.lid = ClassServices.lid();
+	ClassServices.getLessonInfo(function(data){
+		$scope.lesson = data;
+	})
 }
+LessonCtrl.$inject = ['$scope', 'ClassServices'];

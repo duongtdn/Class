@@ -1,0 +1,8 @@
+{	
+	"name"    : "Verilog Beginner course",
+	"lessons" : [
+		{"lid" : "01", "name" : "Lesson 1", "snippet" : "The Language, Concept and Model"},
+		{"lid" : "02", "name" : "Lesson 2", "snippet" : "Data type and Operators"},
+		{"lid" : "03", "name" : "Lesson 3", "snippet" : "Procedures"}
+	]	
+}
