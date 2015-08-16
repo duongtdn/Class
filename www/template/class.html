@@ -5,10 +5,9 @@
 		 {{course.name}}
 	</div> <!-- title -->
 	
-	<div class="lesson" ng-controller="LessonCtrl">
-	
-		<!-- lesson menu -->
-		<div class="lesson-menu dropdown">
+	<!-- lesson bar -->
+	<div class="lesson-nav-bar">
+		<span class="lesson-menu dropdown" ng-controller="LessonCtrl">
 			<!-- menu button -->
 			<button class="btn btn-default btn-sm dropdown-toggle" type="button" id="lessonMenu" data-toggle="dropdown" aria-expanded="true">
 				<span class="glyphicon glyphicon-th-list"></span>
@@ -23,21 +22,81 @@
 					<a role="menuitem" tabindex="-1" ng-href="#/class/{{cid}}/{{lesson.lid}}">{{lesson.name}}: {{lesson.snippet}}</a>
 				</li>
 			</ul>
-			<!-- navigation button -->
-			<div class="right-align">
-				<button class="btn btn-default btn-sm" type="button" >
-					<span class="glyphicon glyphicon-chevron-left"></span>
-					Back
-				</button>
-				<button class="btn btn-default btn-sm" type="button" >
-					Next
-					<span class="glyphicon glyphicon-chevron-right"></span>
-				</button>
-			</div>
-		</div> <!-- lesson-menu -->
+		</span>	
 		
-
-	</div> <!-- lesson -->
+		<!-- navigation button -->
+		<div class="right-align" ng-controller="FlowCtrl">
+			<button class="btn btn-default btn-sm" type="button" ng-click="back()">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				Back
+			</button>
+			<button class="btn btn-default btn-sm" type="button" ng-click="next()">
+				Next
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			</button>
+		</div>
+		
+	</div> <!-- lesson-bar -->
+	
+	<!-- topic presenter -->
+	<div class="topic" ng-controller="TopicCtrl">
+		<button class="btn btn-default btn-sm" type="button" onclick="play()">
+				play
+		</button>
+		<button class="btn btn-default btn-sm" type="button" onclick="stop()">
+				Stop
+		</button>
+		<button class="btn btn-default btn-sm" type="button" onclick="load()">
+				Load
+		</button>
+		{{topic.tid}}
+		<div class="play-board">			
+			<div id="player" ></div>
+		</div>		
+	</div>
+			
+	<script>
+		function myback () {
+			var $injector = angular.injector(['ng']);
+			console.log ($injector);
+		}
+		function mynext () {
+			var $injector = angular.injector(['ng', 'InterClass']);
+			$injector.get('Flow').next();
+		}
+		function play () {
+			VideoPlayer.play();
+		}
+		function stop () {
+			VideoPlayer.stop();
+		}
+		function load () {
+			VideoPlayer.load('ZgSCNS851Rg');
+		}
+		var conf = {
+			player  : 'player',
+            service : 'YT',
+            height  : '480',
+            width   : '854',
+            src     : 'XQMnT9baoi8',
+            vars    : { 'theme':'dark', 'autohide':0, 'modestbranding':1, 'showinfo':1, 'controls':1, 'rel':0},
+			onFinish: function() {
+				eUtil.angularApplyAction('FlowCtrl', 'VideoFinished');
+			}
+		}
+		
+		// For Youtube service, load the IFrame Player API code asynchronously.
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/player_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+		
+		window.onYouTubePlayerAPIReady = function() {
+			VideoPlayer.new(conf);
+		}
+		
+	</script>
+			
 			
             
 </div> <!-- class -->

@@ -2,8 +2,7 @@
 // APP InterCLASS
 
 var hvmApp = angular.module('HVM',[
-	'ngRoute',
-	'classServiceModule',
+	'ngRoute',	
 	'InterClass'
 ])
 .config(['$routeProvider', function($routeProvider) {
@@ -26,6 +25,11 @@ var hvmApp = angular.module('HVM',[
 }])
 .controller('TemplateCtrl',TemplateCtrl);
 
-var ClassApp = angular.module('InterClass',[])
-.controller('ClassCtrl',ClassCtrl)
-.controller('LessonCtrl',LessonCtrl);
+var ClassApp = angular.module('InterClass',[
+	'classServiceModule',
+	'flowModule'
+])
+.controller('ClassCtrl', ClassCtrl)
+.controller('LessonCtrl', LessonCtrl)
+.controller('TopicCtrl', TopicCtrl)
+.controller('FlowCtrl', FlowCtrl);

@@ -11,19 +11,11 @@
     margin-bottom: 0px;
 }
 
-
-.lesson {
-	margin : 0px;
-}
-
-.lesson-menu {
+.lesson-nav-bar {
+	position : relative;
     height : 40px;
     padding-top: 5px;
     margin-bottom: 5px;
-}
-
-.study-lesson-header {
-    font-weight : bold;
 }
 
 .lesson-name {
