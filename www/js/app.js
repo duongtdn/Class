@@ -27,7 +27,8 @@ var hvmApp = angular.module('HVM',[
 
 var ClassApp = angular.module('InterClass',[
 	'classServiceModule',
-	'flowModule'
+	'flowModule',
+	'VideoPlayerModule'
 ])
 .controller('ClassCtrl', ClassCtrl)
 .controller('LessonCtrl', LessonCtrl)

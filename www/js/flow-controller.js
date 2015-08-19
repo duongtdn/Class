@@ -1,14 +1,17 @@
 
 // Function Flow controller
 
-function FlowCtrl($scope, Flow){
+function FlowCtrl($scope, Flow, Video){
 	
 	$scope.next = Flow.next;
 	$scope.back = Flow.back;
 	
-	$scope.VideoFinished = function () {
-		console.log ('Flow control : received msg');
-		Flow.next();
-	};
+	$scope.newPlayer = function (conf) {
+		// assign video player onFinish event, using hardcoded controller name
+		// changing controller name required to modify below code
+		Video.setOnFinish ('FlowCtrl', Flow.next);
+		Video.new(conf);
+	}
+
 }
-FlowCtrl.$inject = ['$scope', 'Flow'];
+FlowCtrl.$inject = ['$scope', 'Flow', 'Video'];

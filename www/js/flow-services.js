@@ -1,7 +1,7 @@
 
 var flowModule = angular.module('flowModule',[]);
 
-flowModule.factory('Flow', [ function () {
+flowModule.factory('Flow', ['Video', function (Video) {
 	
 	// how to know which topic should loaded?
 	// do I need to use ClassService to know topic ID
@@ -13,20 +13,23 @@ flowModule.factory('Flow', [ function () {
 		}
 	};
 	
+	function loadTopic (topic) {
+		flow.topic.tid = topic.tid;
+		flow.topic.name = topic.name;
+	}
+	
 	return {
 		
 		topic : flow.topic,
 		
 		next : function() {
-			console.log ('before : ' + flow.topic.tid);
 			flow.topic.tid++;
-			console.log ('after : ' + flow.topic.tid);
+			// trial code will be replaced latter
+			Video.load('ZgSCNS851Rg');
 		},
 		
 		back : function() {
-			console.log ('before : ' + flow.topic.tid);
 			flow.topic.tid--;
-			console.log ('after : ' + flow.topic.tid);
 		}
 	}
 	

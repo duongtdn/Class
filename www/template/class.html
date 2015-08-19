@@ -79,10 +79,7 @@
             height  : '480',
             width   : '854',
             src     : 'XQMnT9baoi8',
-            vars    : { 'theme':'dark', 'autohide':0, 'modestbranding':1, 'showinfo':1, 'controls':1, 'rel':0},
-			onFinish: function() {
-				eUtil.angularApplyAction('FlowCtrl', 'VideoFinished');
-			}
+            vars    : { 'theme':'dark', 'autohide':0, 'modestbranding':1, 'showinfo':1, 'controls':1, 'rel':0}
 		}
 		
 		// For Youtube service, load the IFrame Player API code asynchronously.
@@ -90,9 +87,9 @@
         tag.src = "https://www.youtube.com/player_api";
         var firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-		
+		// invoke Flow controller to prepare Video Player
 		window.onYouTubePlayerAPIReady = function() {
-			VideoPlayer.new(conf);
+			aUtil.angularApplyAction('FlowCtrl', 'newPlayer', conf);
 		}
 		
 	</script>
