@@ -1,4 +1,26 @@
 {
 	"name" : "Lesson 1",
-	"snippet" : "The Language, Concept and Model"
+	"snippet" : "The Language, Concept and Model",
+	"topic" : [
+		{
+			"id": 1,
+            "name": "Introduction to Verilog",
+			"scene": [
+				{
+					"seq": 1,
+                    "type":"youtube",
+                    "src": "XQMnT9baoi8",
+                    "next": 2,
+                    "previous": 0
+				},
+				{
+                    "seq": 2,
+                    "type":"youtube",
+                    "src": "ZgSCNS851Rg",
+                    "next": 5,
+                    "previous": 2
+                }
+			]
+		}
+	]
 }

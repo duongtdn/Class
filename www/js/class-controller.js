@@ -1,12 +1,12 @@
 
 // Function for lesson controller
 
-function ClassCtrl($scope, ClassServices){
+function ClassCtrl($scope, Flow){
 	
-	$scope.cid = ClassServices.cid();
+	$scope.cid = Flow.cid();
 	
-	ClassServices.getCourseInfo(function(data){
+	Flow.getCourse(function(data){
 		$scope.course = data;		
 	})
 }
-ClassCtrl.$inject = ['$scope', 'ClassServices'];
+ClassCtrl.$inject = ['$scope', 'Flow'];

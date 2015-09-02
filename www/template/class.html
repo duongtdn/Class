@@ -1,15 +1,17 @@
  <div class="class container" ng-controller="ClassCtrl">
-
+	
 	<!-- title -->
+<!--
 	<div class="class-title">
 		 {{course.name}}
 	</div> <!-- title -->
 	
 	<!-- lesson bar -->
-	<div class="lesson-nav-bar">
-		<span class="lesson-menu dropdown" ng-controller="LessonCtrl">
+	<div class="lesson-nav-bar" ng-controller="LessonCtrl">
+	
+		<span class="lesson-menu dropdown" >
 			<!-- menu button -->
-			<button class="btn btn-default btn-sm dropdown-toggle" type="button" id="lessonMenu" data-toggle="dropdown" aria-expanded="true">
+			<button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
 				<span class="glyphicon glyphicon-th-list"></span>
 				<span class="lesson-header"> {{lesson.name}} </span>
 				<span class="glyphicon glyphicon-chevron-right"></span>
@@ -25,7 +27,7 @@
 		</span>	
 		
 		<!-- navigation button -->
-		<div class="right-align" ng-controller="FlowCtrl">
+		<div class="right-align" >
 			<button class="btn btn-default btn-sm" type="button" ng-click="back()">
 				<span class="glyphicon glyphicon-chevron-left"></span>
 				Back
@@ -40,20 +42,40 @@
 	
 	<!-- topic presenter -->
 	<div class="topic" ng-controller="TopicCtrl">
-		<button class="btn btn-default btn-sm" type="button" onclick="play()">
-				play
-		</button>
-		<button class="btn btn-default btn-sm" type="button" onclick="stop()">
-				Stop
-		</button>
-		<button class="btn btn-default btn-sm" type="button" onclick="load()">
-				Load
-		</button>
-		{{topic.tid}}
-		<div class="play-board">			
-			<div id="player" ></div>
+		<div class="play-board">	
+<!--		
+			<iframe id="player" width="1170px" height="658px" frameborder="0"
+					src="http://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1">
+			</iframe>	
+-->
+			<div id="player"> </div> 
 		</div>		
 	</div>
+	
+	<!-- progress bar -->
+	<div class="meter">
+		<span style="width:25%;"></span>
+	</div>
+	
+	<div class="class-access-panel">
+		<button type="button" class="btn btn-default btn-lg" title="Scheduler">
+			<span class="glyphicon glyphicon-th"></span>
+			Scheduler
+		</button>
+		<button type="button" class="btn btn-default btn-lg" title="Resources">
+			<span class="glyphicon glyphicon-cloud-download"></span>
+			Resources
+		</button>
+		<button type="button" class="btn btn-default btn-lg" title="Stats">
+			<span class="glyphicon glyphicon-stats"></span>
+			Stats
+		</button>
+		<button type="button" class="btn btn-default btn-lg" title="Chat room">
+			<span class="glyphicon glyphicon-comment"></span>
+			Chat Room
+		</button>
+	</div>
+
 			
 	<script>
 		function myback () {
@@ -76,8 +98,8 @@
 		var conf = {
 			player  : 'player',
             service : 'YT',
-            height  : '480',
-            width   : '854',
+            height  : '658',
+            width   : '1170',
             src     : 'XQMnT9baoi8',
             vars    : { 'theme':'dark', 'autohide':0, 'modestbranding':1, 'showinfo':1, 'controls':1, 'rel':0}
 		}
@@ -89,7 +111,7 @@
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 		// invoke Flow controller to prepare Video Player
 		window.onYouTubePlayerAPIReady = function() {
-			aUtil.angularApplyAction('FlowCtrl', 'newPlayer', conf);
+			aUtil.angularApplyAction('LessonCtrl', 'youtubeReady');
 		}
 		
 	</script>

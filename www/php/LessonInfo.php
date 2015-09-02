@@ -2,6 +2,9 @@
 
 	require "Util.php";
 	
+	// simulate delay
+	//sleep(2);
+	
 	if ( isset($_POST['cid']) && isset($_POST['lid'])) {
 		
 		$cid = $_POST['cid'];

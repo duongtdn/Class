@@ -7,31 +7,36 @@ VideoPlayerModule.factory('Video', ['$timeout', function ($timeout) {
 		
 	var player;
 	
+	var youtubeApiReady = false;
+	
 	function onReady () {
-		console.log ('player is ready');
+		console.log (' player is ready ');
 	}
 	
 	var onFinish
 	
 	return {
 		
-		new : function(conf) {
-				
-			if (!player) {
-				// depend on the service, setup the player
-				if (conf.service == 'YT') {
+		setYoutubeApiReady : function(val) {
+			youtubeApiReady = val;
+		},
+		
+		new : function (type,src) {
+			if (type == 'youtube') {
+				if (youtubeApiReady) {
 					player = new YT.Player(conf.player, {
 						height      : conf.height,
 						width       : conf.width,
-						videoId     : conf.src,
+						videoId     : src,
 						playerVars  : conf.vars,
 						events      : {
 							'onReady' : onReady,
 							'onStateChange' : onFinish
 						}
-					});
-				} // end if
-			} // end if !player
+					});	
+					console.log (' player is created ');
+				}
+			}
 			
 		}, // new()
 		
@@ -53,9 +58,29 @@ VideoPlayerModule.factory('Video', ['$timeout', function ($timeout) {
 			player.stopVideo();
 		}, // stop()
 		
-		load : function (src) {
-			player.cueVideoById({videoId:src});
-		} // top()
+		load : function (type,src) {
+			if (type == 'youtube') {
+				if (youtubeApiReady) {
+					if (!player) {
+						player = new YT.Player(conf.player, {
+							height      : conf.height,
+							width       : conf.width,
+							videoId     : src,
+							playerVars  : conf.vars,
+							events      : {
+								'onReady' : onReady,
+								'onStateChange' : onFinish
+							}
+						});	
+						console.log (' player is created ');
+					} else {
+						console.log (player);
+						$timeout(player.cueVideoById({videoId:src}),0);
+					}
+				}
+			}
+			
+		} // load()
 	
 	} // return
 	
