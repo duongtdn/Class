@@ -1,6 +1,7 @@
 {
 	"name" : "Lesson 2",
 	"snippet" : "Data type and Operators",
+	"next" : "0",
 	"topic" : [
 		{
 			"id": 1,

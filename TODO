@@ -1,5 +1,12 @@
 TODO
+
 07 Sep 2015
-   - find proper method for detect last lesson when navigating
-   - write logic for back button
+   - (done) find proper method for detect last lesson when navigating
+   - (done) write logic for back button
+   - responsive layout 
+   - interactive board architecture
+   - QSIC & NIOS-II programming
+   
+08 Sep 2015
+   - responsive layout 
    

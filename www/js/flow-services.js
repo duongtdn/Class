@@ -22,7 +22,8 @@ flowModule.factory('Flow', ['$routeParams', '$http', '$location', 'Video', funct
 		}
 	};
 	
-	var lesson, tid, sid;	// sid
+	var lesson, tid, sid;
+	var ready = false;
 	
 	function loadScene (tid, sid) {
 		
@@ -80,7 +81,8 @@ flowModule.factory('Flow', ['$routeParams', '$http', '$location', 'Video', funct
 				lesson = resp.data;
 				tid = 0;
 				sid = 0;
-				newScene(tid, sid);				
+				newScene(tid, sid);
+				ready = true;
 				// success
 				callback(resp.data);
 			}, function (resp) {
@@ -95,29 +97,44 @@ flowModule.factory('Flow', ['$routeParams', '$http', '$location', 'Video', funct
 		},
 		
 		next : function() {			
-			if (tid !== 'undefined') {
+			if (ready) {
 				sid ++;
 				if (sid == lesson.topic[tid].scene.length) { // last scene					
 					sid = 0;
 					tid++;
-					if (tid == lesson.topic.length) { // last topic
+					if (tid == lesson.topic.length) { // last topic, proceed to next lesson
 						tid = 0;
 						var currPath = $location.path(),						
 							index = currPath.lastIndexOf('/'),
 							rootPath = currPath.substr(0,index);
-							nextLesson = parseInt(currPath.substr(index+1),10) + 1;
+							//nextLesson = parseInt(currPath.substr(index+1),10) + 1;
+							nextLesson = lesson.next;
 						// need proper check for that this is the last lesson
-						var nextPath = rootPath + '/' + nextLesson;
+						var nextPath;
+						if (nextLesson !== '0') {
+							nextPath = rootPath + '/' + nextLesson;
+						} else {
+							// move to end course page
+							nextPath = '';
+						}
+						// change url to next lesson
 						$location.path(nextPath);
 					}
 				}
 				loadScene(tid, sid);
 			}
-			console.log (tid + ' ' + sid);
 		},
 		
 		back : function() {
-			//flow.topic.tid--;
+			if (ready) {
+				if (sid > 0) {
+					sid--;
+				} else if (tid > 0) {
+					tid--;
+					sid = lesson.topic[tid].scene.length-1;
+				}
+				loadScene(tid, sid);
+			}
 		}
 	}
 	

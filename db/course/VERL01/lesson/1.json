@@ -1,6 +1,7 @@
 {
 	"name" : "Lesson 1",
 	"snippet" : "The Language, Concept and Model",
+	"next" : "2",
 	"topic" : [
 		{
 			"id": 1,
