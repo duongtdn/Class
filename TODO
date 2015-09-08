@@ -3,10 +3,14 @@ TODO
 07 Sep 2015
    - (done) find proper method for detect last lesson when navigating
    - (done) write logic for back button
-   - responsive layout 
-   - interactive board architecture
-   - QSIC & NIOS-II programming
+   - (done) read QSIC & NIOS-II programming
    
 08 Sep 2015
-   - responsive layout 
+   - (done) progress bar: layout
+   - (80%) ARM & Linux Kernel
+   
+09 Sep 2015
+   - progress bar: adaptive width + update function
+   - ARM & Linux Kernel
+   - NIOS Demo program
    

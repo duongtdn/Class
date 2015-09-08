@@ -57,17 +57,30 @@
     right: 0px;
 }
 
+/* Progress bar */
+
 .meter {
 	height: 5px;  /* Can be anything */
 	position: relative;
 	background: #555;
-	margin-bottom : 4px;
+	float : left;
 }
 
 .meter > span {
-  display: block;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  background-color: #f1a165;
+	display: block;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+
+.orange > span {
+	background-color: #f1a165;
+}
+
+.red > span {
+	background-color: #f0a3a3;;
+}
+
+.cus-progress {
+	margin-bottom : 4px;
 }

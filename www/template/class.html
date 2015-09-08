@@ -38,25 +38,33 @@
 			</button>
 		</div>
 		
+		<!-- topic presenter -->
+		<div class="topic" ng-controller="TopicCtrl">
+			<div class="play-board">	
+	<!--		
+				<iframe id="player" width="1170px" height="658px" frameborder="0"
+						src="http://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1">
+				</iframe>	
+	-->
+				<div id="player"> </div> 
+			</div>		
+		</div>
+		
+		<!-- progress bar -->
+		<div class="cus-progress">
+			<div ng-repeat="bar in bars track by $index">
+				<div class="meter orange" style="width:{{bar.width}};margin-right:{{bar.spacing}}" >
+					<span style="width:{{bar.complete}};"></span>
+				</div>
+			</div>
+		</div>
+		
 	</div> <!-- lesson-bar -->
 	
-	<!-- topic presenter -->
-	<div class="topic" ng-controller="TopicCtrl">
-		<div class="play-board">	
-<!--		
-			<iframe id="player" width="1170px" height="658px" frameborder="0"
-					src="http://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1">
-			</iframe>	
--->
-			<div id="player"> </div> 
-		</div>		
-	</div>
+
 	
-	<!-- progress bar -->
-	<div class="meter">
-		<span style="width:25%;"></span>
-	</div>
-	
+
+<!--	
 	<div class="class-access-panel">
 		<button type="button" class="btn btn-default btn-lg" title="Scheduler">
 			<span class="glyphicon glyphicon-th"></span>
@@ -76,6 +84,7 @@
 		</button>
 	</div>
 
+-->
 			
 	<script>
 		function myback () {

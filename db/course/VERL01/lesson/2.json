@@ -22,6 +22,26 @@
                     "previous": 2
                 }
 			]
+		},
+		{
+			"id": 2,
+            "name": "Introduction to Verilog",
+			"scene": [
+				{
+					"seq": 1,
+                    "type":"youtube",
+                    "src": "X6a9odk6b_c",
+                    "next": 2,
+                    "previous": 0
+				},
+				{
+                    "seq": 2,
+                    "type":"youtube",
+                    "src": "ZgSCNS851Rg",
+                    "next": 5,
+                    "previous": 2
+                }
+			]
 		}
 	]
 }
