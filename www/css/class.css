@@ -12,14 +12,14 @@
     margin-bottom: 0px;
 }
 
-.lesson-nav-bar {
+.lecture-nav-bar {
 	position : relative;
     height : 35px;
     padding-top: 0px;
     margin-bottom: 0px;
 }
 
-.lesson-name {
+.lecture-name {
     font-weight : bold;
     padding-left : 5px;
 }

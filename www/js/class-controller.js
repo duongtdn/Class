@@ -1,5 +1,5 @@
 
-// Function for lesson controller
+// Function for class controller
 
 function ClassCtrl($scope, Flow){
 	

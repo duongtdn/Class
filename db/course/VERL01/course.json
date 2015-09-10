@@ -1,9 +1,9 @@
 {	
 	"name"    : "Verilog Beginner course",
-	"lessons" : [
-		{"lid" : "1", "name" : "Lesson 1", "snippet" : "The Language, Concept and Model"},
-		{"lid" : "2", "name" : "Lesson 2", "snippet" : "Data type and Operators"},
-		{"lid" : "3", "name" : "Lesson 3", "snippet" : "Procedures"}
+	"lectures" : [
+		{"lid" : "1", "name" : "Lecture 1", "snippet" : "The Language, Concept and Model"},
+		{"lid" : "2", "name" : "Lecture 2", "snippet" : "Data type and Operators"},
+		{"lid" : "3", "name" : "Lecture 3", "snippet" : "Procedures"}
 	],
 	"downloadable" : [
 	]

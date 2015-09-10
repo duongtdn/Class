@@ -30,5 +30,5 @@ var ClassApp = angular.module('InterClass',[
 	'VideoPlayerModule'
 ])
 .controller('ClassCtrl', ClassCtrl)
-.controller('LessonCtrl', LessonCtrl)
+.controller('LectureCtrl', LectureCtrl)
 .controller('TopicCtrl', TopicCtrl);

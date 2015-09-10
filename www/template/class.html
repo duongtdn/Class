@@ -6,22 +6,22 @@
 		 {{course.name}}
 	</div> <!-- title -->
 	
-	<!-- lesson bar -->
-	<div class="lesson-nav-bar" ng-controller="LessonCtrl">
+	<!-- lecture bar -->
+	<div class="lecture-nav-bar" ng-controller="LectureCtrl">
 	
-		<span class="lesson-menu dropdown" >
+		<span class="lecture-menu dropdown" >
 			<!-- menu button -->
 			<button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
 				<span class="glyphicon glyphicon-th-list"></span>
-				<span class="lesson-header"> {{lesson.name}} </span>
+				<span class="lecture-header"> {{lecture.name}} </span>
 				<span class="glyphicon glyphicon-chevron-right"></span>
 			</button>
-			<!-- short explanation of lesson -->
-			<span class="lesson-name"> {{lesson.snippet}} </span>
-			<!-- dropdown lesson menu -->
-			<ul class="dropdown-menu" role="menu" aria-labelledby="lessonMenu">
-				<li role="presentation" ng-repeat="lesson in course.lessons">
-					<a role="menuitem" tabindex="-1" ng-href="#/class/{{cid}}/{{lesson.lid}}">{{lesson.name}}: {{lesson.snippet}}</a>
+			<!-- short explanation of lecture -->
+			<span class="lecture-name"> {{lecture.snippet}} </span>
+			<!-- dropdown lecture menu -->
+			<ul class="dropdown-menu" role="menu" aria-labelledby="lectureMenu">
+				<li role="presentation" ng-repeat="lecture in course.lectures">
+					<a role="menuitem" tabindex="-1" ng-href="#/class/{{cid}}/{{lecture.lid}}">{{lecture.name}}: {{lecture.snippet}}</a>
 				</li>
 			</ul>
 		</span>	
@@ -39,7 +39,7 @@
 		</div>
 		
 		<!-- topic presenter -->
-		<div class="topic" ng-controller="TopicCtrl">
+		<div id="study-board" class="topic" ng-controller="TopicCtrl">
 			<div class="play-board">	
 	<!--		
 				<iframe id="player" width="1170px" height="658px" frameborder="0"
@@ -59,7 +59,7 @@
 			</div>
 		</div>
 		
-	</div> <!-- lesson-bar -->
+	</div> <!-- lecture-bar -->
 	
 
 	
@@ -120,7 +120,7 @@
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 		// invoke Flow controller to prepare Video Player
 		window.onYouTubePlayerAPIReady = function() {
-			aUtil.angularApplyAction('LessonCtrl', 'youtubeReady');
+			aUtil.angularApplyAction('LectureCtrl', 'youtubeReady');
 		}
 		
 	</script>

@@ -1,7 +1,7 @@
 
-// Function for lesson controller
+// Function for lecture controller
 
-function LessonCtrl($scope, Flow, Video){
+function LectureCtrl($scope, Flow, Video){
 	
 	$scope.lid = Flow.lid();
 
@@ -9,15 +9,17 @@ function LessonCtrl($scope, Flow, Video){
 	$scope.next = Flow.next;
 	$scope.back = Flow.back;
 	
-	var screenWidth = 1170,	// need to detect screen width
+	var studyBoardEl = document.getElementById('study-board');
+	
+	var screenWidth = studyBoardEl.offsetWidth,	// need to detect screen width
 		spacing = 3;
 	
 	
 	
-	// async request for lesson data
-	Flow.getLesson(function(data){
-		$scope.lesson = data;
-		$scope.topics = $scope.lesson.topic;
+	// async request for lecture data
+	Flow.getLecture(function(data){
+		$scope.lecture = data;
+		$scope.topics = $scope.lecture.topic;
 		var standardBarWidth = (screenWidth + spacing)/$scope.topics.length - spacing,
 			lastBarWidth = screenWidth - (standardBarWidth + spacing) * ($scope.topics.length - 1);
 		// prepare bar
@@ -40,10 +42,10 @@ function LessonCtrl($scope, Flow, Video){
 
 	// special treatment for youtube async api load
 	$scope.youtubeReady = function() {
-		Video.setOnFinish ('LessonCtrl', Flow.next);
+		Video.setOnFinish ('LectureCtrl', Flow.next);
 		Video.setYoutubeApiReady(true);
-		if ($scope.lesson) {
-			// lesson is already loaded,
+		if ($scope.lecture) {
+			// lecture is already loaded,
 			Flow.loadPlayboard();
 		}
 	}
@@ -52,4 +54,4 @@ function LessonCtrl($scope, Flow, Video){
 	
 	
 }
-LessonCtrl.$inject = ['$scope', 'Flow', 'Video'];
+LectureCtrl.$inject = ['$scope', 'Flow', 'Video'];

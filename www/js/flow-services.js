@@ -5,14 +5,14 @@ flowModule.factory('Flow', ['$routeParams', '$http', '$location', 'Video', funct
 	
 	var SERVER = {
 		COURSE : "php/CourseInfo.php",
-		LESSON : "php/LessonInfo.php"
+		LECTURE : "php/lectureInfo.php"
 	}
 	
 	
 	
 	// how to know which topic should loaded?
 	var flow = {
-		lesson : {},
+		lecture : {},
 		topic : {
 			tid : 1,
 			name : "topic 1"
@@ -22,13 +22,13 @@ flowModule.factory('Flow', ['$routeParams', '$http', '$location', 'Video', funct
 		}
 	};
 	
-	var lesson, tid, sid;
+	var lecture, tid, sid;
 	var ready = false;
 	
 	function loadScene (tid, sid) {
 		
-		var type = lesson.topic[tid].scene[sid].type,
-			src = lesson.topic[tid].scene[sid].src;
+		var type = lecture.topic[tid].scene[sid].type,
+			src = lecture.topic[tid].scene[sid].src;
 		
 		if (type == 'youtube' ) {
 			Video.load(type, src);
@@ -37,8 +37,8 @@ flowModule.factory('Flow', ['$routeParams', '$http', '$location', 'Video', funct
 	
 	function newScene (tid, sid) {
 		
-		var type = lesson.topic[tid].scene[sid].type,
-			src = lesson.topic[tid].scene[sid].src;
+		var type = lecture.topic[tid].scene[sid].type,
+			src = lecture.topic[tid].scene[sid].src;
 		
 		if (type == 'youtube' ) {
 			Video.new(type, src);
@@ -70,15 +70,15 @@ flowModule.factory('Flow', ['$routeParams', '$http', '$location', 'Video', funct
 			});
 		},
 		
-		getLesson : function(callback) {
+		getLecture : function(callback) {
 			$http({
-				url : SERVER.LESSON,
+				url : SERVER.LECTURE,
 				method : 'POST',
 				data : $.param({cid : $routeParams.cid, lid : $routeParams.lid}),
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 			})
 			.then(function (resp) {
-				lesson = resp.data;
+				lecture = resp.data;
 				tid = 0;
 				sid = 0;
 				newScene(tid, sid);
@@ -99,25 +99,25 @@ flowModule.factory('Flow', ['$routeParams', '$http', '$location', 'Video', funct
 		next : function() {			
 			if (ready) {
 				sid ++;
-				if (sid == lesson.topic[tid].scene.length) { // last scene					
+				if (sid == lecture.topic[tid].scene.length) { // last scene					
 					sid = 0;
 					tid++;
-					if (tid == lesson.topic.length) { // last topic, proceed to next lesson
+					if (tid == lecture.topic.length) { // last topic, proceed to next lecture
 						tid = 0;
 						var currPath = $location.path(),						
 							index = currPath.lastIndexOf('/'),
 							rootPath = currPath.substr(0,index);
-							//nextLesson = parseInt(currPath.substr(index+1),10) + 1;
-							nextLesson = lesson.next;
-						// need proper check for that this is the last lesson
+							//nextlecture = parseInt(currPath.substr(index+1),10) + 1;
+							nextlecture = lecture.next;
+						// need proper check for that this is the last lecture
 						var nextPath;
-						if (nextLesson !== '0') {
-							nextPath = rootPath + '/' + nextLesson;
+						if (nextlecture !== '0') {
+							nextPath = rootPath + '/' + nextlecture;
 						} else {
 							// move to end course page
 							nextPath = '';
 						}
-						// change url to next lesson
+						// change url to next lecture
 						$location.path(nextPath);
 					}
 				}
@@ -131,7 +131,7 @@ flowModule.factory('Flow', ['$routeParams', '$http', '$location', 'Video', funct
 					sid--;
 				} else if (tid > 0) {
 					tid--;
-					sid = lesson.topic[tid].scene.length-1;
+					sid = lecture.topic[tid].scene.length-1;
 				}
 				loadScene(tid, sid);
 			}

@@ -10,7 +10,13 @@ TODO
    - (80%) ARM & Linux Kernel
    
 09 Sep 2015
-   - progress bar: adaptive width + update function
-   - ARM & Linux Kernel
+   - (80%) progress bar: adaptive width - responsive is defer
+   - (done) change lesson to lecture
+   - (done)ARM & Linux Kernel
+   
+10 Sep 2015
+   - progress bar : update function
+   - Youtube iframe conversion
+   - responsive design
    - NIOS Demo program
    

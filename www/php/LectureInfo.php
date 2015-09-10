@@ -10,15 +10,15 @@
 		$cid = $_POST['cid'];
 		$lid = $_POST['lid'];
 		
-		$lessonINFO = '../../db/course/' . $cid . '/lesson/' . $lid . '.json';
+		$lectureINFO = '../../db/course/' . $cid . '/lecture/' . $lid . '.json';
 			
 		# get class path from cid
-		$lesson = getDB($lessonINFO);
-		if ($lesson === false) {
-			# lesson does not exist
+		$lecture = getDB($lectureINFO);
+		if ($lecture === false) {
+			# lecture does not exist
 			exit ('Error 404-02');
 		} else {
-			$str = json_encode($lesson);
+			$str = json_encode($lecture);
 			echo $str;
 		}
 		
