@@ -1,14 +1,14 @@
  <div class="class container" ng-controller="ClassCtrl">
-	
+
 	<!-- title -->
 <!--
 	<div class="class-title">
 		 {{course.name}}
 	</div> <!-- title -->
-	
+
 	<!-- lecture bar -->
 	<div class="lecture-nav-bar" ng-controller="LectureCtrl">
-	
+
 		<span class="lecture-menu dropdown" >
 			<!-- menu button -->
 			<button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
@@ -24,8 +24,8 @@
 					<a role="menuitem" tabindex="-1" ng-href="#/class/{{cid}}/{{lecture.lid}}">{{lecture.name}}: {{lecture.snippet}}</a>
 				</li>
 			</ul>
-		</span>	
-		
+		</span>
+
 		<!-- navigation button -->
 		<div class="right-align" >
 			<button class="btn btn-default btn-sm" type="button" ng-click="back()">
@@ -37,19 +37,19 @@
 				<span class="glyphicon glyphicon-chevron-right"></span>
 			</button>
 		</div>
-		
+
 		<!-- topic presenter -->
 		<div id="study-board" class="topic" ng-controller="TopicCtrl">
-			<div class="play-board">	
-	<!--		
+			<div class="play-board">
+	<!--
 				<iframe id="player" width="1170px" height="658px" frameborder="0"
 						src="http://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1">
-				</iframe>	
+				</iframe>
 	-->
-				<div id="player"> </div> 
-			</div>		
+				<div id="player"> </div>
+			</div>
 		</div>
-		
+
 		<!-- progress bar -->
 		<div class="cus-progress">
 			<div ng-repeat="bar in bars track by $index">
@@ -58,13 +58,13 @@
 				</div>
 			</div>
 		</div>
-		
+		<div> {{lid}}/{{current.tid}}/{{current.sid}} </div>
 	</div> <!-- lecture-bar -->
-	
 
-	
 
-<!--	
+
+
+<!--
 	<div class="class-access-panel">
 		<button type="button" class="btn btn-default btn-lg" title="Scheduler">
 			<span class="glyphicon glyphicon-th"></span>
@@ -85,7 +85,7 @@
 	</div>
 
 -->
-			
+
 	<script>
 		function myback () {
 			var $injector = angular.injector(['ng']);
@@ -112,7 +112,7 @@
             src     : 'XQMnT9baoi8',
             vars    : { 'theme':'dark', 'autohide':0, 'modestbranding':1, 'showinfo':1, 'controls':1, 'rel':0}
 		}
-		
+
 		// For Youtube service, load the IFrame Player API code asynchronously.
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/player_api";
@@ -122,9 +122,9 @@
 		window.onYouTubePlayerAPIReady = function() {
 			aUtil.angularApplyAction('LectureCtrl', 'youtubeReady');
 		}
-		
+
 	</script>
-			
-			
-            
+
+
+
 </div> <!-- class -->

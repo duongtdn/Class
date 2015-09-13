@@ -2,20 +2,37 @@
 // Function for lecture controller
 
 function LectureCtrl($scope, Flow, Video){
-	
+
 	$scope.lid = Flow.lid();
+	$scope.current = Flow.current;
+	$scope.progress = Flow.progress;
 
 	// navigation logic
-	$scope.next = Flow.next;
+	$scope.next = function() {
+		Flow.next();
+		// logic for display correct current bar
+		var id = $scope.current.tid,
+				complete = $scope.progress[$scope.lid][id];
+		if (complete === '0%') {
+			id--;
+			complete = $scope.progress[$scope.lid][id];
+		}
+		$scope.UpdatecurrentBar(id, 'complete', complete);
+	}
+
 	$scope.back = Flow.back;
-	
+
 	var studyBoardEl = document.getElementById('study-board');
-	
+
 	var screenWidth = studyBoardEl.offsetWidth,	// need to detect screen width
 		spacing = 3;
-	
-	
-	
+
+	$scope.UpdatecurrentBar = function (id, prop, val) {
+		if ($scope.bars[id].hasOwnProperty(prop)) {
+			$scope.bars[id][prop] = val;
+		}
+	};
+
 	// async request for lecture data
 	Flow.getLecture(function(data){
 		$scope.lecture = data;
@@ -24,18 +41,18 @@ function LectureCtrl($scope, Flow, Video){
 			lastBarWidth = screenWidth - (standardBarWidth + spacing) * ($scope.topics.length - 1);
 		// prepare bar
 		$scope.bars = [];
-		for (var i=0, len=$scope.topics.length-1; i < len; i++) {			
+		for (var i=0, len=$scope.topics.length-1; i < len; i++) {
 			$scope.bars.push({
 				width : standardBarWidth + 'px',
 				spacing : spacing + 'px',
-				complete : '100%'
+				complete : '0%'
 			});
 		}
 		// for the last
 		$scope.bars.push({
 			width : lastBarWidth + 'px',
 			spacing : '0px',
-			complete : '60%'
+			complete : '0%'
 		});
 		//console.log (data);
 	})
@@ -49,9 +66,9 @@ function LectureCtrl($scope, Flow, Video){
 			Flow.loadPlayboard();
 		}
 	}
-	
-	// progress bar
-	
-	
+
+	// current bar
+
+
 }
 LectureCtrl.$inject = ['$scope', 'Flow', 'Video'];
