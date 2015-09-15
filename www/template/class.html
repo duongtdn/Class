@@ -53,9 +53,11 @@
 		<!-- progress bar -->
 		<div class="cus-progress">
 			<div ng-repeat="bar in bars track by $index">
-				<div class="meter orange" style="width:{{bar.width}};margin-right:{{bar.spacing}}" >
-					<span style="width:{{bar.complete}};"></span>
-				</div>
+				<div class="meter" style="width:{{bar.width}};margin-right:{{bar.spacing}}" >
+					<span ng-class="{'orange':sceneBar.complete}"
+                style="width:{{sceneBar.width}}"
+                ng-repeat="sceneBar in bar.sceneBars track by $index"></span>
+        </div>
 			</div>
 		</div>
 		<div> {{lid}}/{{current.tid}}/{{current.sid}} </div>

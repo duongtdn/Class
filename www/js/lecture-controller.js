@@ -10,14 +10,7 @@ function LectureCtrl($scope, Flow, Video){
 	// navigation logic
 	$scope.next = function() {
 		Flow.next();
-		// logic for display correct current bar
-		var id = $scope.current.tid,
-				complete = $scope.progress[$scope.lid][id];
-		if (complete === '0%') {
-			id--;
-			complete = $scope.progress[$scope.lid][id];
-		}
-		$scope.UpdatecurrentBar(id, 'complete', complete);
+		$scope.UpdateCurrentBar();
 	}
 
 	$scope.back = Flow.back;
@@ -27,38 +20,69 @@ function LectureCtrl($scope, Flow, Video){
 	var screenWidth = studyBoardEl.offsetWidth,	// need to detect screen width
 		spacing = 3;
 
-	$scope.UpdatecurrentBar = function (id, prop, val) {
-		if ($scope.bars[id].hasOwnProperty(prop)) {
-			$scope.bars[id][prop] = val;
-		}
+	$scope.UpdateCurrentBar = function () {
+		var progress = $scope.progress[$scope.lid];
+		for (var tid=0, len=$scope.bars.length; tid<len; tid++) {
+			for (var sid=0, slen=$scope.bars[tid].sceneBars.length; sid<slen; sid++) {
+					var val = progress[tid][sid];
+					if (val) {
+						$scope.bars[tid].sceneBars[sid].complete = val;
+					}
+			} // end for sid
+		} // end for tid
 	};
 
+	function makeSceneBars (nscene, barWidth) {
+		var sceneBarWidth = Math.round(barWidth / nscene),
+				lastSceneBarWidth = barWidth - (sceneBarWidth * (nscene-1));
+		var sceneBars = [];
+		// standard scene bars
+		for (var j=0 ; j<nscene-1; j++) {
+			sceneBars.push({
+				width : sceneBarWidth + 'px',
+				complete : 0	// will retrieve value from progress
+			})
+		} // end for j
+		// last scene bar
+		sceneBars.push({
+			width : lastSceneBarWidth + 'px',
+			complete : 0 // will retrieve value from progress
+		});
+
+		return sceneBars;
+	}
+
 	// async request for lecture data
-	Flow.getLecture(function(data){
+	Flow.getLecture ( function (data) {
 		$scope.lecture = data;
 		$scope.topics = $scope.lecture.topic;
-		var standardBarWidth = (screenWidth + spacing)/$scope.topics.length - spacing,
-			lastBarWidth = screenWidth - (standardBarWidth + spacing) * ($scope.topics.length - 1);
-		// prepare bar
+		var barWidth = Math.round((screenWidth + spacing)/$scope.topics.length) - spacing,
+			lastBarWidth = screenWidth - (barWidth + spacing) * ($scope.topics.length - 1);
+		// prepare topic bar
 		$scope.bars = [];
 		for (var i=0, len=$scope.topics.length-1; i < len; i++) {
+			// prepare scene bar
+			var sceneBars = makeSceneBars ($scope.topics[i].scene.length, barWidth);
+			// prepare topic bar
 			$scope.bars.push({
-				width : standardBarWidth + 'px',
+				width : barWidth + 'px',
 				spacing : spacing + 'px',
-				complete : '0%'
+				sceneBars : sceneBars
 			});
-		}
+		} // end for i
+
 		// for the last
+		sceneBars = makeSceneBars ($scope.topics[i].scene.length, lastBarWidth);
 		$scope.bars.push({
 			width : lastBarWidth + 'px',
 			spacing : '0px',
-			complete : '0%'
+			sceneBars : sceneBars
 		});
-		//console.log (data);
+		console.log ($scope.bars);
 	})
 
 	// special treatment for youtube async api load
-	$scope.youtubeReady = function() {
+	$scope.youtubeReady = function () {
 		Video.setOnFinish ('LectureCtrl', Flow.next);
 		Video.setYoutubeApiReady(true);
 		if ($scope.lecture) {

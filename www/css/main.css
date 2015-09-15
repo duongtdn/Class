@@ -63,21 +63,22 @@
 	height: 5px;  /* Can be anything */
 	position: relative;
 	background: #555;
-	float : left;
+	float: left;
 }
 
 .meter > span {
-	display: block;
+	display: inline-block;
 	height: 100%;
 	position: relative;
+  float: left;
 	overflow: hidden;
 }
 
-.orange > span {
+.orange {
 	background-color: #f1a165;
 }
 
-.red > span {
+.red {
 	background-color: #f0a3a3;;
 }
 

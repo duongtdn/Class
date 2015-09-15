@@ -4,19 +4,18 @@ TODO
    - (done) find proper method for detect last lesson when navigating
    - (done) write logic for back button
    - (done) read QSIC & NIOS-II programming
-   
+
 08 Sep 2015
    - (done) progress bar: layout
    - (80%) ARM & Linux Kernel
-   
+
 09 Sep 2015
    - (80%) progress bar: adaptive width - responsive is defer
    - (done) change lesson to lecture
    - (done)ARM & Linux Kernel
-   
+
 10 Sep 2015
-   - progress bar : update function
+   - (90%) progress bar : update function -> server side
    - Youtube iframe conversion
    - responsive design
    - NIOS Demo program
-   

@@ -89,7 +89,8 @@ flowModule.factory('Flow', ['$routeParams', '$http', '$location', 'Video', funct
 				current.sid = 0;
 				progress[$routeParams.lid] = {};
 				for (var i=0, len=lecture.topic.length; i<len; i++) {
-					progress[$routeParams.lid][i] = '0%';
+					// will retrieve data stored in server instead
+					progress[$routeParams.lid][i] = {};
 				}
 				// crete new scene & set to ready
 				newScene(current.tid, current.sid);
@@ -115,10 +116,12 @@ flowModule.factory('Flow', ['$routeParams', '$http', '$location', 'Video', funct
 			if (ready) {
 				//record progress
 				var tid = current.tid
-						sid = current.sid + 1,
-						complete = (sid / lecture.topic[tid].scene.length) * 100 + '%';
+						sid = current.sid;
 
-				progress[$routeParams.lid][tid] = complete;
+				// mark done for the current scene
+				progress[$routeParams.lid][tid][sid] = 1;
+				// code to save progress to the server here
+
 				console.log (progress);
 				// moving to next
 				current.sid ++;
