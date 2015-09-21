@@ -5,9 +5,9 @@ flowModule.factory('Flow', ['$routeParams', '$http', '$location', 'Video', funct
 
 	var SERVER = {
 		COURSE : "php/CourseInfo.php",
-		LECTURE : "php/lectureInfo.php"
+		LECTURE : "php/lectureInfo.php",
+		LECTUREPROGRESS : "php/ProgressInfo.php"
 	}
-
 
 
 	// how to know which topic should loaded?
@@ -50,6 +50,60 @@ flowModule.factory('Flow', ['$routeParams', '$http', '$location', 'Video', funct
 		}
 	}
 
+	function getLecture (callback) {
+		$http({
+			url : SERVER.LECTURE,
+			method : 'POST',
+			data : $.param({cid : $routeParams.cid, lid : $routeParams.lid}),
+			headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+		})
+		.then(function (resp) {
+
+			lecture = resp.data;
+
+			// init current and progress
+			current.tid = 0;
+			current.sid = 0;
+
+			if (!progress[$routeParams.lid]) {
+				progress[$routeParams.lid] = {};
+			}
+
+			for (var i=0, len=lecture.topic.length; i<len; i++) {
+				if (progress[$routeParams.lid][i]) {
+
+					for (var j=0, slen=lecture.topic[i].scene.length; j<slen; j++) {
+						if (progress[$routeParams.lid][i][j]) {
+							current.tid = i;
+							current.sid = j;
+						}
+					}
+				} else {
+					progress[$routeParams.lid][i] = {};
+				}
+			}
+
+			// adjust current
+			if ( (current.tid !== 0 || 	current.sid !== 0) &&
+			 		 (current.tid !== lecture.topic.length-1 || current.sid !== lecture.topic[current.tid].scene.length-1) ) {
+				current.sid++;
+				if ( current.sid == lecture.topic[current.tid].scene.length ) {
+					current.sid = 0;
+					current.tid++;
+				}
+			}
+
+			// crete new scene & set to ready
+			newScene(current.tid, current.sid);
+			ready = true;
+
+			// success
+			callback(resp.data);
+		}, function (resp) {
+			// error
+		});
+	}
+
 	return {
 
 		cid : function() {
@@ -75,28 +129,33 @@ flowModule.factory('Flow', ['$routeParams', '$http', '$location', 'Video', funct
 			});
 		},
 
-		getLecture : function(callback) {
+		getUserProgressAndLecture : function (callback) {
 			$http({
-				url : SERVER.LECTURE,
+				url : SERVER.LECTUREPROGRESS,
 				method : 'POST',
-				data : $.param({cid : $routeParams.cid, lid : $routeParams.lid}),
+				// will replace bob with authen
+				data : $.param({uid : 'bob', cid : $routeParams.cid, lid : $routeParams.lid}),
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 			})
 			.then(function (resp) {
-				lecture = resp.data;
-				// init current & progress
-				current.tid = 0;
-				current.sid = 0;
-				progress[$routeParams.lid] = {};
-				for (var i=0, len=lecture.topic.length; i<len; i++) {
-					// will retrieve data stored in server instead
-					progress[$routeParams.lid][i] = {};
+				var data = resp.data;
+
+				if ( typeof progress[$routeParams.lid] === 'undefined' ) {
+					progress[$routeParams.lid] = {};
 				}
-				// crete new scene & set to ready
-				newScene(current.tid, current.sid);
-				ready = true;
+
+				for (tid in data) {
+					if (!progress[$routeParams.lid][tid]) {
+						progress[$routeParams.lid][tid] = {};
+					}
+					for (sid in data[tid]) {
+						progress[$routeParams.lid][tid][sid] = data[tid][sid];
+					}
+				}
+
+				getLecture(callback);
+
 				// success
-				callback(resp.data);
 			}, function (resp) {
 				// error
 			});

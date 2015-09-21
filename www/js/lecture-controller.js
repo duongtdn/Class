@@ -52,8 +52,8 @@ function LectureCtrl($scope, Flow, Video){
 		return sceneBars;
 	}
 
-	// async request for lecture data
-	Flow.getLecture ( function (data) {
+
+	Flow.getUserProgressAndLecture( function (data) {
 		$scope.lecture = data;
 		$scope.topics = $scope.lecture.topic;
 		var barWidth = Math.round((screenWidth + spacing)/$scope.topics.length) - spacing,
@@ -78,8 +78,8 @@ function LectureCtrl($scope, Flow, Video){
 			spacing : '0px',
 			sceneBars : sceneBars
 		});
-		console.log ($scope.bars);
-	})
+		$scope.UpdateCurrentBar();
+	});
 
 	// special treatment for youtube async api load
 	$scope.youtubeReady = function () {
