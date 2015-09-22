@@ -1,7 +1,7 @@
 /* -------------------------------------------------------------------------------------------------
    PROJECT      : HVM
    DESCRIPTION  : Util provide util functions
-   DEPENDENCIES : 
+   DEPENDENCIES :
    AUTHOR       : DuongTDN
    USAGE
 
@@ -22,14 +22,29 @@ var eUtil = {
 		var getType = {};
 		return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
 	},
-	
+
 	isArray : function (arrayToCheck) {
 		return arrayToCheck.constructor.toString().indexOf("Array") > -1;
 	},
+
+	arrayToObject : function(ary) {
+		var obj = {};
+		for (var i=0, len=ary.length; i<len; i++) {
+			if (ary[i].constructor === Array) {
+				obj[i] = eUtil.arrayToObject(ary[i]);
+			} else {
+				obj[i] = ary[i];
+			}// end if
+		} // end for
+		console.log (ary);
+		console.log (obj);
+		return obj;
+	} // end func arrayToObject
+
 }
 
 var aUtil = {
-	
+
 	angularApplyAction : function  (ctrl, method) {
 		var ctrl = arguments[0],
 			method = arguments[1],
@@ -45,7 +60,7 @@ var aUtil = {
 		}
 		if (typeof scope != 'undefined') {
 			scope.$apply( function(){
-				
+
 				if (eUtil.isString(method)) {
 					scope[method].apply(this||window, args);
 				} else if (eUtil.isFunction(method)) {
@@ -53,12 +68,12 @@ var aUtil = {
 				}
 				/*
 				else {
-					console.log ('is object');				
+					console.log ('is object');
 					for (var prop in obj) {
 						if (obj.hasOwnProperty(prop)) {
 							alias[prop] = obj[prop];
 						}
-					}				
+					}
 				}
 				*/
 			});
@@ -66,6 +81,5 @@ var aUtil = {
 			console.log("Util : Info: Failed to get scope");
 		}
 	}
-	
-}
 
+}

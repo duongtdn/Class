@@ -83,7 +83,7 @@ function LectureCtrl($scope, Flow, Video){
 
 	// special treatment for youtube async api load
 	$scope.youtubeReady = function () {
-		Video.setOnFinish ('LectureCtrl', Flow.next);
+		Video.setOnFinish ('LectureCtrl',$scope.next);
 		Video.setYoutubeApiReady(true);
 		if ($scope.lecture) {
 			// lecture is already loaded,

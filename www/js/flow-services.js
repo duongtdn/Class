@@ -133,8 +133,12 @@ flowModule.factory('Flow', ['$routeParams', '$http', '$location', 'Video', funct
 			$http({
 				url : SERVER.LECTUREPROGRESS,
 				method : 'POST',
-				// will replace bob with authen
-				data : $.param({uid : 'bob', cid : $routeParams.cid, lid : $routeParams.lid}),
+				data : $.param({
+					uid : 'bob',							// will replace bob with authen
+					cid : $routeParams.cid,
+					lid : $routeParams.lid,
+					cmd : 'r'
+				}),
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 			})
 			.then(function (resp) {
@@ -179,9 +183,27 @@ flowModule.factory('Flow', ['$routeParams', '$http', '$location', 'Video', funct
 
 				// mark done for the current scene
 				progress[$routeParams.lid][tid][sid] = 1;
-				// code to save progress to the server here
 
-				console.log (progress);
+				// code to save progress to the server here
+				$http({
+					url : SERVER.LECTUREPROGRESS,
+					method : 'POST',
+					data : $.param({
+						uid : 'bob',							// will replace bob with authen
+						cid : $routeParams.cid,
+						lid : $routeParams.lid,
+						cmd : 'w',
+						dat : JSON.stringify(progress)
+					}),
+					headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+				})
+				.then(function (resp) {
+					var data = resp.data;
+					console.log (data);
+				}, function (resp) {
+					// error
+				});
+
 				// moving to next
 				current.sid ++;
 				if (current.sid == lecture.topic[current.tid].scene.length) { // last scene
