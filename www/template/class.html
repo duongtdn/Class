@@ -27,25 +27,20 @@
 		</span>
 
 		<!-- navigation button -->
-		<div class="right-align" >
-			<button class="btn btn-default btn-sm" type="button" ng-click="back()">
+		<div class="right-align lecture-nav-btn" >
+			<button class="btn btn-default" type="button" ng-click="back()">
 				<span class="glyphicon glyphicon-chevron-left"></span>
 				Back
 			</button>
-			<button class="btn btn-default btn-sm" type="button" ng-click="next()">
+			<button class="btn btn-default" type="button" ng-click="next()">
 				Next
 				<span class="glyphicon glyphicon-chevron-right"></span>
 			</button>
 		</div>
 
 		<!-- topic presenter -->
-		<div id="study-board" class="topic" ng-controller="TopicCtrl">
+		<div id="study-board" class="topic-presenter" ng-controller="TopicCtrl">
 			<div class="play-board">
-	<!--
-				<iframe id="player" width="1170px" height="658px" frameborder="0"
-						src="http://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1">
-				</iframe>
-	-->
 				<div id="player"> </div>
 			</div>
 		</div>
@@ -60,33 +55,32 @@
         </div>
 			</div>
 		</div>
-		<div> {{lid}}/{{current.tid}}/{{current.sid}} </div>
+		<!-- <div> {{lid}}/{{current.tid}}/{{current.sid}} </div> -->
 	</div> <!-- lecture-bar -->
 
+  <div class="class-access-panel" >
 
-
-
-<!--
-	<div class="class-access-panel">
-		<button type="button" class="btn btn-default btn-lg" title="Scheduler">
-			<span class="glyphicon glyphicon-th"></span>
+    <div >
+      <span class="glyphicon glyphicon-menu-hamburger"></span>
 			Scheduler
-		</button>
-		<button type="button" class="btn btn-default btn-lg" title="Resources">
-			<span class="glyphicon glyphicon-cloud-download"></span>
-			Resources
-		</button>
-		<button type="button" class="btn btn-default btn-lg" title="Stats">
-			<span class="glyphicon glyphicon-stats"></span>
-			Stats
-		</button>
-		<button type="button" class="btn btn-default btn-lg" title="Chat room">
-			<span class="glyphicon glyphicon-comment"></span>
-			Chat Room
-		</button>
-	</div>
+    </div>
 
--->
+    <div >
+      <span class="glyphicon glyphicon-cloud-download"></span>
+      Resources
+    </div>
+
+    <div >
+      <span class="glyphicon glyphicon-stats"></span>
+			Stats
+    </div>
+
+    <div >
+      <span class="glyphicon glyphicon-comment"></span>
+      Chat Room
+    </div>
+
+  </div>
 
 	<script>
 		function myback () {

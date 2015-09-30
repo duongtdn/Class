@@ -4,7 +4,7 @@
     background-color :#337ab7;
     color : white;
     height : 30px;
-    margin-bottom : 5px;
+    margin-bottom : 2px;
 }
 
 .top-banner {
@@ -55,33 +55,4 @@
     display: inline-block;
     position: absolute;
     right: 0px;
-}
-
-/* Progress bar */
-
-.meter {
-	height: 5px;  /* Can be anything */
-	position: relative;
-	background: #555;
-	float: left;
-}
-
-.meter > span {
-	display: inline-block;
-	height: 100%;
-	position: relative;
-  float: left;
-	overflow: hidden;
-}
-
-.orange {
-	background-color: #f1a165;
-}
-
-.red {
-	background-color: #f0a3a3;;
-}
-
-.cus-progress {
-	margin-bottom : 4px;
 }
