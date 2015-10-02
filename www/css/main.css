@@ -56,3 +56,8 @@
     position: absolute;
     right: 0px;
 }
+
+.drop-up {
+    top: auto;
+    bottom: 100% !important;
+}

@@ -11,15 +11,16 @@
 
 		<span class="lecture-menu dropdown" >
 			<!-- menu button -->
-			<button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+			<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
 				<span class="glyphicon glyphicon-th-list"></span>
 				<span class="lecture-header"> {{lecture.name}} </span>
 				<span class="glyphicon glyphicon-chevron-right"></span>
 			</button>
+
 			<!-- short explanation of lecture -->
 			<span class="lecture-name"> {{lecture.snippet}} </span>
 			<!-- dropdown lecture menu -->
-			<ul class="dropdown-menu" role="menu" aria-labelledby="lectureMenu">
+			<ul class="dropdown-menu lecture-menu-dropdown" role="menu" aria-labelledby="lectureMenu">
 				<li role="presentation" ng-repeat="lecture in course.lectures">
 					<a role="menuitem" tabindex="-1" ng-href="#/class/{{cid}}/{{lecture.lid}}">{{lecture.name}}: {{lecture.snippet}}</a>
 				</li>
@@ -28,14 +29,14 @@
 
 		<!-- navigation button -->
 		<div class="right-align lecture-nav-btn" >
-			<button class="btn btn-default" type="button" ng-click="back()">
+			<div ng-click="back()">
 				<span class="glyphicon glyphicon-chevron-left"></span>
 				Back
-			</button>
-			<button class="btn btn-default" type="button" ng-click="next()">
+			</div>
+			<div ng-click="next()">
 				Next
 				<span class="glyphicon glyphicon-chevron-right"></span>
-			</button>
+			</div>
 		</div>
 
 		<!-- topic presenter -->
@@ -58,12 +59,29 @@
 		<!-- <div> {{lid}}/{{current.tid}}/{{current.sid}} </div> -->
 	</div> <!-- lecture-bar -->
 
+
   <div class="class-access-panel" >
 
-    <div >
+    <div class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
       <span class="glyphicon glyphicon-menu-hamburger"></span>
 			Scheduler
     </div>
+
+    <ul class="dropdown-menu drop-up topic-dropup-menu" role="menu">
+      <li><a href="#">Action</a></li>
+      <li><a href="#">Another action</a></li>
+      <li><a href="#">Something else here</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Separated link</a></li>
+      <li>
+        <table class="table-hover">
+            <tr class="cursor-pointer" ng-repeat="topic in topics">
+                <td class="col-sm-1"> {{topic.id}} </td>
+                <td class="col-sm-9"> {{topic.name}} </td>
+            </tr>
+        </table>
+      </li>
+    </ul>
 
     <div >
       <span class="glyphicon glyphicon-cloud-download"></span>

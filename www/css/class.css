@@ -12,32 +12,50 @@
   margin-bottom: 0px;
 }
 
-.lecture-nav-bar {
 
+.lecture-menu button:hover {
+	background-color:#70a1cc;
+	color: #fff;
+}
+
+
+.lecture-nav-bar {
 	position : relative;
   height : 40px;
   padding-top: 0px;
-  margin-bottom: 0px;
+	margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .lecture-name {
   /*font-weight : bold;*/
 	display: inline-block;
 	position: relative;
-	font-size: 1.4em;
-  padding : 5px;
+	font-size: 1.3em;
+	/*font-weight: bold;*/
+  padding-left: 5px;
+	padding-top: 5px;
+	vertical-align: middle;
 }
 
-.lecture-header {
-	font-size: 1.4em;
+.lecture-menu-dropdown {
+	margin-top : 15px;
 }
 
-.dropdown-menu {
+.lecture-nav-btn div {
+	display: inline-block;
+	border-bottom: solid 3px rgba(255,255,255,0.0);
 	margin-top: 10px;
+	margin-left : 12px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	font-size: 1.2em;
 }
 
-.lecture-nav-btn > button {
-	margin-top: 3px;
+.lecture-nav-btn div:hover {
+	border-bottom: solid 3px #337ab7;
+	color: #337ab7;
+	cursor: pointer;
 }
 
 .topic-presenter {
@@ -86,10 +104,13 @@
 	width : 200px;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	font-size: 1.5em;
+	padding-left: 0px;
+	font-size: 1.4em;
 	/*color : #337ab7;*/
-	text-align: center;
+  text-align: left;
 	border-left: solid 5px #fff;
+	-webkit-transition: padding 1s; /* Safari */
+  transition: padding 1s;
 }
 
 .class-access-panel div:first-child {
@@ -100,9 +121,12 @@
 	background-color:#70a1cc;
 	border-left: solid 5px #337ab7;
 	color: #fff;
+	/*text-align: center;*/
 	cursor: pointer;
+	padding-left: 30px;
 }
 
-.class-access-panel div > span {
-	padding-right: 5px;
+.topic-dropup-menu {
+	background-color : rgba(255,255,255,0.8) !important;
+	margin-bottom: 10px;
 }
