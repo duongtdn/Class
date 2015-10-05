@@ -9,17 +9,20 @@
 			"scene": [
 				{
 					"seq": 1,
+					"name" : "Skyrim themesong: the Dragonborn comes",
           "type":"youtube",
           "src": "XQMnT9baoi8"
 				},
 				{
             "seq": 2,
+						"name" : "Games of Thrones themesong",
             "type":"youtube",
             "src": "ZgSCNS851Rg"
         },
 				{
 					"seq": 3,
             "type":"youtube",
+						"name" : "Whatever You like",
             "src": "ASj81daun5Q"
 				}
 			]
@@ -31,6 +34,7 @@
 				{
             "seq": 1,
             "type":"youtube",
+						"name" : "Physical model perspective: Reg vs. Net",
             "src": "JxPj3GAYYZ0"
         }
 			]
@@ -41,11 +45,13 @@
 			"scene": [
 				{
 					"seq": 1,
+					"name" : "Concurrent modleling of Verilog",
           "type":"youtube",
           "src": "X6a9odk6b_c"
 				},
 				{
             "seq": 2,
+						"name" : "Parallel Modelling",
             "type":"youtube",
             "src": "ZgSCNS851Rg"
         }
@@ -57,11 +63,13 @@
 			"scene": [
 				{
 					"seq": 1,
+					"name" : "Circuit as a Combinational",
             "type":"youtube",
             "src": "XQMnT9baoi8"
 				},
 				{
             "seq": 2,
+						"name" : "Avoiding commin mistake",
             "type":"youtube",
             "src": "ZgSCNS851Rg"
         }
@@ -73,11 +81,13 @@
 			"scene": [
 				{
 					"seq": 1,
+					"name" : "Flipflop flipflop & D-flipflop",
           "type":"youtube",
           "src": "XQMnT9baoi8"
 				},
 				{
             "seq": 2,
+						"name" : "Clock and reset",
             "type":"youtube",
             "src": "ZgSCNS851Rg"
         }

@@ -64,24 +64,33 @@
 
     <div class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
       <span class="glyphicon glyphicon-menu-hamburger"></span>
-			Scheduler
+			Contents
     </div>
 
-    <ul class="dropdown-menu drop-up topic-dropup-menu" role="menu">
-      <li><a href="#">Action</a></li>
-      <li><a href="#">Another action</a></li>
-      <li><a href="#">Something else here</a></li>
-      <li class="divider"></li>
-      <li><a href="#">Separated link</a></li>
-      <li>
-        <table class="table-hover">
-            <tr class="cursor-pointer" ng-repeat="topic in topics">
-                <td class="col-sm-1"> {{topic.id}} </td>
-                <td class="col-sm-9"> {{topic.name}} </td>
-            </tr>
-        </table>
-      </li>
-    </ul>
+    <table class="lecture-content dropdown-menu drop-up topic-dropup-menu"
+          role="menu" ng-controller="LectureCtrl" >
+        <tr class="cursor-pointer" ng-repeat="content in contents"
+            ng-switch on="content.type">
+
+          <th ng-switch-when="topic" >
+            <span class="glyphicon glyphicon-triangle-bottom"></span>
+          </th>
+          <th ng-switch-when="topic" colspan="2"> {{content.name}} </th>
+          <th ng-switch-when="topic" >
+            O
+          </th>
+
+          <td ng-switch-when="scene" > </td>
+          <td ng-switch-when="scene" >
+            <span class="glyphicon glyphicon-film"></span>
+          </td>
+          <td ng-switch-when="scene" > {{content.name}}</td>
+          <td ng-switch-when="scene" >
+            O
+          </td>
+
+        </tr>
+    </table>
 
     <div >
       <span class="glyphicon glyphicon-cloud-download"></span>
@@ -100,24 +109,35 @@
 
   </div>
 
+<br />
+<br />
+
+  <div ng-controller="LectureCtrl" >
+
+    <table class="lecture-content">
+        <tr class="cursor-pointer" ng-repeat="content in contents"
+            ng-switch on="content.type">
+
+          <th ng-switch-when="topic" >
+            <span class="glyphicon glyphicon-triangle-bottom"></span>
+          </th>
+          <th ng-switch-when="topic" colspan="2"> {{content.name}} </th>
+          <th ng-switch-when="topic" > O </th>
+
+          <td ng-switch-when="scene" > </td>
+          <td ng-switch-when="scene" >
+            <span class="glyphicon glyphicon-film"></span>
+          </td>
+          <td ng-switch-when="scene" > {{content.name}}</td>
+          <td ng-switch-when="scene" > O </td>
+
+        </tr>
+    </table>
+
+  </div>
+
 	<script>
-		function myback () {
-			var $injector = angular.injector(['ng']);
-			console.log ($injector);
-		}
-		function mynext () {
-			var $injector = angular.injector(['ng', 'InterClass']);
-			$injector.get('Flow').next();
-		}
-		function play () {
-			VideoPlayer.play();
-		}
-		function stop () {
-			VideoPlayer.stop();
-		}
-		function load () {
-			VideoPlayer.load('ZgSCNS851Rg');
-		}
+
 		var conf = {
 			player  : 'player',
             service : 'YT',

@@ -52,10 +52,27 @@ function LectureCtrl($scope, Flow, Video){
 		return sceneBars;
 	}
 
+	function getContent(topics) {
+		var contents = [];
+		for (var i = 0, tlen = topics.length; i < tlen; i++) {
+			contents.push({
+				name : topics[i].name,
+				type : 'topic'
+			});
+			for (var n = 0, nlen = topics[i].scene.length; n < nlen; n++) {
+				contents.push({
+					name : topics[i].scene[n].name,
+					type : 'scene'
+				});
+			} // end for n
+		} // end for i
+		return contents;
+	}
 
 	Flow.getUserProgressAndLecture( function (data) {
 		$scope.lecture = data;
 		$scope.topics = $scope.lecture.topic;
+		$scope.contents = getContent($scope.topics);
 		var barWidth = Math.round((screenWidth + spacing)/$scope.topics.length) - spacing,
 			lastBarWidth = screenWidth - (barWidth + spacing) * ($scope.topics.length - 1);
 		// prepare topic bar
