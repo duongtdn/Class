@@ -67,15 +67,23 @@
 			Contents
     </div>
 
-    <table class="lecture-content dropdown-menu drop-up topic-dropup-menu"
+    <table id="content-menu" class="lecture-content dropdown-menu drop-up topic-dropup-menu"
           role="menu" ng-controller="LectureCtrl" >
         <tr class="cursor-pointer" ng-repeat="content in contents"
+            ng-hide="shouldHideThisRow($index)"
             ng-switch on="content.type">
 
-          <th ng-switch-when="topic" >
-            <span class="glyphicon glyphicon-triangle-bottom"></span>
+          <th ng-switch-when="topic" ng-click="toggleTopicContent($index)" >
+            <span class="glyphicon"
+                  ng-class="{'glyphicon-triangle-bottom' : isShowingContent($index),
+                             'glyphicon-triangle-right' : isHiddingContent($index)
+                            }">
+            </span>
           </th>
-          <th ng-switch-when="topic" colspan="2"> {{content.name}} </th>
+          <th ng-switch-when="topic" colspan="2"
+              ng-click="toggleTopicContent($index)">
+              {{content.name}}
+          </th>
           <th ng-switch-when="topic" >
             O
           </th>
@@ -109,10 +117,7 @@
 
   </div>
 
-<br />
-<br />
-
-  <div ng-controller="LectureCtrl" >
+  <!-- <div ng-controller="LectureCtrl" >
 
     <table class="lecture-content">
         <tr class="cursor-pointer" ng-repeat="content in contents"
@@ -134,7 +139,7 @@
         </tr>
     </table>
 
-  </div>
+  </div> -->
 
 	<script>
 

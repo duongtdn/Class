@@ -52,23 +52,6 @@ function LectureCtrl($scope, Flow, Video){
 		return sceneBars;
 	}
 
-	function getContent(topics) {
-		var contents = [];
-		for (var i = 0, tlen = topics.length; i < tlen; i++) {
-			contents.push({
-				name : topics[i].name,
-				type : 'topic'
-			});
-			for (var n = 0, nlen = topics[i].scene.length; n < nlen; n++) {
-				contents.push({
-					name : topics[i].scene[n].name,
-					type : 'scene'
-				});
-			} // end for n
-		} // end for i
-		return contents;
-	}
-
 	Flow.getUserProgressAndLecture( function (data) {
 		$scope.lecture = data;
 		$scope.topics = $scope.lecture.topic;
@@ -96,6 +79,11 @@ function LectureCtrl($scope, Flow, Video){
 			sceneBars : sceneBars
 		});
 		$scope.UpdateCurrentBar();
+		// setup width and height of content menu
+		var contentMenu = document.getElementById('content-menu'),
+			  width = contentMenu.offsetWidth,
+				height = contentMenu.offsetHeight;
+		console.log (width + '/' + height);
 	});
 
 	// special treatment for youtube async api load
@@ -106,9 +94,78 @@ function LectureCtrl($scope, Flow, Video){
 			// lecture is already loaded,
 			Flow.loadPlayboard();
 		}
+	};
+
+	function getContent(topics) {
+		var contents = [];
+		for (var i = 0, tlen = topics.length; i < tlen; i++) {
+			contents.push({
+				id : i,
+				name : topics[i].name,
+				type : 'topic',
+				expand : true
+			});
+			for (var n = 0, nlen = topics[i].scene.length; n < nlen; n++) {
+				contents.push({
+					id : i + '.' + n,
+					name : topics[i].scene[n].name,
+					type : 'scene',
+					show : true
+				});
+			} // end for n
+		} // end for i
+		return contents;
 	}
 
-	// current bar
+
+	// disable boostrap dropdown menu click behavior for content dropup menu
+	$('.lecture-content').on('click', function(event){
+    var events = $._data(document, 'events') || {};
+    events = events.click || [];
+    for(var i = 0; i < events.length; i++) {
+        if(events[i].selector) {
+
+            //Check if the clicked element matches the event selector
+            if($(event.target).is(events[i].selector)) {
+                events[i].handler.call(event.target, event);
+            }
+
+            // Check if any of the clicked element parents matches the
+            // delegated event selector (Emulating propagation)
+            $(event.target).parents(events[i].selector).each(function(){
+                events[i].handler.call(this, event);
+            });
+        }
+    }
+    event.stopPropagation(); //Always stop propagation
+
+	});
+
+	$scope.toggleTopicContent = function(id) {
+		$scope.contents[id].expand = !$scope.contents[id].expand;
+		var showingScene = $scope.contents[id].expand;
+		for (var i = id+1, len = $scope.contents.length; i < len; i++) {
+			if ($scope.contents[i].type === 'scene') {
+				$scope.contents[i].show = showingScene;
+			} else {
+				return;
+			}
+		}
+	};
+
+	$scope.isShowingContent = function(id) {
+		return $scope.contents[id].expand;
+	};
+	$scope.isHiddingContent = function(id) {
+		return !$scope.contents[id].expand;
+	};
+
+	$scope.shouldHideThisRow = function(id) {
+		// var test = $scope.contents[id].type === 'scene' && !$scope.contents[id].show;
+		// console.log (id + ' : ' + test);
+		// console.log ('    ' + $scope.contents[id].type + ' / ' + !$scope.contents[id].show);
+		return $scope.contents[id].type === 'scene' && !$scope.contents[id].show;
+	};
 
 
 }
