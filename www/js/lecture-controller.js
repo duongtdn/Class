@@ -79,11 +79,6 @@ function LectureCtrl($scope, Flow, Video){
 			sceneBars : sceneBars
 		});
 		$scope.UpdateCurrentBar();
-		// setup width and height of content menu
-		var contentMenu = document.getElementById('content-menu'),
-			  width = contentMenu.offsetWidth,
-				height = contentMenu.offsetHeight;
-		console.log (width + '/' + height);
 	});
 
 	// special treatment for youtube async api load
@@ -161,12 +156,35 @@ function LectureCtrl($scope, Flow, Video){
 	};
 
 	$scope.shouldHideThisRow = function(id) {
-		// var test = $scope.contents[id].type === 'scene' && !$scope.contents[id].show;
-		// console.log (id + ' : ' + test);
-		// console.log ('    ' + $scope.contents[id].type + ' / ' + !$scope.contents[id].show);
 		return $scope.contents[id].type === 'scene' && !$scope.contents[id].show;
 	};
 
+	$scope.isCompleteTopic = function (id) {
+		var tid = id,
+		    progress = $scope.progress[$scope.lid];;
+		for (var sid in progress[tid]) {
+			if (progress[tid][sid] !== 1) {
+				return false;
+			}
+		}
+		return true;
+	};
+
+	$scope.isCompletedScene = function (id) {
+		var a = id.split("."),
+		    tid = a[0],
+				sid = a[1],
+				progress = $scope.progress[$scope.lid];
+		return progress[tid][sid] === 1;
+	};
+
+	$scope.isStudyingScene = function (id) {
+		var a = id.split("."),
+		    tid = a[0],
+				sid = a[1];
+		return $scope.current.tid === parseInt(tid,10) &&
+		       $scope.current.sid === parseInt(sid,10);
+	};
 
 }
 LectureCtrl.$inject = ['$scope', 'Flow', 'Video'];

@@ -7,7 +7,7 @@
 	</div> <!-- title -->
 
 	<!-- lecture bar -->
-	<div class="lecture-nav-bar" ng-controller="LectureCtrl">
+	<div class="lecture-nav-bar" ng-controller="LectureCtrl" >
 
 		<span class="lecture-menu dropdown" >
 			<!-- menu button -->
@@ -85,7 +85,10 @@
               {{content.name}}
           </th>
           <th ng-switch-when="topic" >
-            O
+            <span class="glyphicon"
+                  ng-class="{'glyphicon-ok' : isCompleteTopic(content.id)
+                            }">
+            </span>
           </th>
 
           <td ng-switch-when="scene" > </td>
@@ -94,7 +97,11 @@
           </td>
           <td ng-switch-when="scene" > {{content.name}}</td>
           <td ng-switch-when="scene" >
-            O
+            <span class="glyphicon"
+                  ng-class="{'glyphicon-ok-sign' : isCompletedScene(content.id),
+                             'glyphicon-time' : isStudyingScene(content.id)
+                            }">
+            </span>
           </td>
 
         </tr>

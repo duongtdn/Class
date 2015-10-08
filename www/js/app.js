@@ -2,7 +2,7 @@
 // APP InterCLASS
 
 var hvmApp = angular.module('HVM',[
-	'ngRoute',	
+	'ngRoute',
 	'InterClass'
 ])
 .config(['$routeProvider', function($routeProvider) {
