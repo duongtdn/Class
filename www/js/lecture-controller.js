@@ -11,9 +11,16 @@ function LectureCtrl($scope, Flow, Video){
 	$scope.next = function() {
 		Flow.next();
 		$scope.UpdateCurrentBar();
-	}
+	};
 
 	$scope.back = Flow.back;
+
+	$scope.goto = function(id) {
+		var a = id.split("."),
+		    tid = a[0],
+				sid = a[1];
+		Flow.goto(tid,sid);
+	}
 
 	var studyBoardEl = document.getElementById('study-board');
 
@@ -175,13 +182,14 @@ function LectureCtrl($scope, Flow, Video){
 		    tid = a[0],
 				sid = a[1],
 				progress = $scope.progress[$scope.lid];
-		return progress[tid][sid] === 1;
+		return progress[tid][sid] === 1 && !$scope.isStudyingScene(id);
 	};
 
 	$scope.isStudyingScene = function (id) {
 		var a = id.split("."),
 		    tid = a[0],
 				sid = a[1];
+		
 		return $scope.current.tid === parseInt(tid,10) &&
 		       $scope.current.sid === parseInt(sid,10);
 	};

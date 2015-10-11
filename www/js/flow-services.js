@@ -242,7 +242,16 @@ flowModule.factory('Flow', ['$routeParams', '$http', '$location', 'Video', funct
 				}
 				loadScene(current.tid, current.sid);
 			}
+		},
+
+		goto : function(tid, sid) {
+			if (ready) {
+				current.tid =  parseInt(tid,10);
+				current.sid =  parseInt(sid,10);
+				loadScene(current.tid, current.sid);
+			}
 		}
-	}
+
+	} // return
 
 }]);

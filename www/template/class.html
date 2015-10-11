@@ -92,14 +92,17 @@
           </th>
 
           <td ng-switch-when="scene" > </td>
-          <td ng-switch-when="scene" >
+          <td ng-switch-when="scene" ng-class="{'text-orange' : isStudyingScene(content.id)}">
             <span class="glyphicon glyphicon-film"></span>
           </td>
-          <td ng-switch-when="scene" > {{content.name}}</td>
+          <td ng-switch-when="scene" ng-click="goto(content.id)"
+              ng-class="{'text-orange' : isStudyingScene(content.id)}">
+            {{content.name}}
+          </td>
           <td ng-switch-when="scene" >
             <span class="glyphicon"
                   ng-class="{'glyphicon-ok-sign' : isCompletedScene(content.id),
-                             'glyphicon-time' : isStudyingScene(content.id)
+                             'glyphicon-time text-orange' : isStudyingScene(content.id)
                             }">
             </span>
           </td>
