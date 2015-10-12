@@ -111,13 +111,13 @@
     </table>
 
     <div >
-      <span class="glyphicon glyphicon-cloud-download"></span>
-      Resources
+      <span class="glyphicon glyphicon-stats"></span>
+			Progress
     </div>
 
     <div >
-      <span class="glyphicon glyphicon-stats"></span>
-			Stats
+      <span class="glyphicon glyphicon-cloud-download"></span>
+      Download
     </div>
 
     <div >
@@ -127,29 +127,13 @@
 
   </div>
 
-  <!-- <div ng-controller="LectureCtrl" >
 
-    <table class="lecture-content">
-        <tr class="cursor-pointer" ng-repeat="content in contents"
-            ng-switch on="content.type">
+  <!-- show user progress -->
+  <div class="user-progress" ng-controller="UserProgressCtrl">
 
-          <th ng-switch-when="topic" >
-            <span class="glyphicon glyphicon-triangle-bottom"></span>
-          </th>
-          <th ng-switch-when="topic" colspan="2"> {{content.name}} </th>
-          <th ng-switch-when="topic" > O </th>
+    
 
-          <td ng-switch-when="scene" > </td>
-          <td ng-switch-when="scene" >
-            <span class="glyphicon glyphicon-film"></span>
-          </td>
-          <td ng-switch-when="scene" > {{content.name}}</td>
-          <td ng-switch-when="scene" > O </td>
-
-        </tr>
-    </table>
-
-  </div> -->
+  </div>
 
 	<script>
 

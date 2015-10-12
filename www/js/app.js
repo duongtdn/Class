@@ -31,4 +31,5 @@ var ClassApp = angular.module('InterClass',[
 ])
 .controller('ClassCtrl', ClassCtrl)
 .controller('LectureCtrl', LectureCtrl)
-.controller('TopicCtrl', TopicCtrl);
+.controller('TopicCtrl', TopicCtrl)
+.controller('UserProgressCtrl', UserProgressCtrl);

@@ -126,6 +126,10 @@
 	padding-left: 30px;
 }
 
+.class-access-panel span {
+	padding-right : 5px;
+}
+
 .lecture-content {
 	border : solid 1px #aaa;
 	border-radius : 10px;
