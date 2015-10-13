@@ -1,29 +1,5 @@
 TODO
 
-07 Sep 2015
-   - (done) find proper method for detect last lesson when navigating
-   - (done) write logic for back button
-   - (done) read QSIC & NIOS-II programming
-
-08 Sep 2015
-   - (done) progress bar: layout
-   - (80%) ARM & Linux Kernel
-
-09 Sep 2015
-   - (80%) progress bar: adaptive width - responsive is defer
-   - (done) change lesson to lecture
-   - (done)ARM & Linux Kernel
-
-18 Sep 2015
-   - progress bar : update function -> server side
-   - Youtube iframe conversion
-   - responsive design
-   - NIOS Demo program
-
-22 Sep 2015
-   - (done) : update progress to server
-
-23 Sep 2015
-   - Youtube iframe conversion
-   - responsive design
-   - NIOS Demo program
+13 Oct 2015
+   - user.progress must be fully initialized when register a course
+   - move to meteor

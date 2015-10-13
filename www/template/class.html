@@ -127,11 +127,16 @@
 
   </div>
 
-
+<br /><br /><br />
   <!-- show user progress -->
   <div class="user-progress" ng-controller="UserProgressCtrl">
 
-    
+    {{ progressOfLecture() }};
+    <div ng-repeat="lec in progress[lid]">
+      {{ progressOfTopic($index) }}
+    </div>
+
+
 
   </div>
 

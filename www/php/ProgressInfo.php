@@ -32,8 +32,17 @@
 		} else if ($cmd == 'w') {
 			# update progress
 			if ( isset($_POST['dat']) ) {
-				$dat = json_decode($_POST['dat']);
-				writeDB($userCourse, $cid, $dat);
+				$dat = $_POST['dat'];
+				// writeDB($userCourse, $cid, $dat);
+				$jsonF = file_get_contents($userCourse);
+				$data = json_decode($jsonF,true);
+				foreach ($dat as $l => $v) {
+					
+					$data[$cid][$l] = $v;
+				}
+				# update back to the server
+				$newJsonStr = json_encode($data);
+				file_put_contents($userCourse,$newJsonStr);
 			}
 		}
 

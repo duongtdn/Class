@@ -10,18 +10,6 @@ flowModule.factory('Flow', ['$routeParams', '$http', '$location', 'Video', funct
 	}
 
 
-	// how to know which topic should loaded?
-	var flow = {
-		lecture : {},
-		topic : {
-			tid : 1,
-			name : "topic 1"
-		},
-		scene : {
-			id : 0
-		}
-	};
-
 	var lecture;
 	var current = {
 		tid : 0,
@@ -165,8 +153,6 @@ flowModule.factory('Flow', ['$routeParams', '$http', '$location', 'Video', funct
 			});
 		},
 
-		topic : flow.topic,
-
 		current : current,
 
 		progress : progress,
@@ -198,8 +184,7 @@ flowModule.factory('Flow', ['$routeParams', '$http', '$location', 'Video', funct
 					headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 				})
 				.then(function (resp) {
-					var data = resp.data;
-					console.log (data);
+
 				}, function (resp) {
 					// error
 				});

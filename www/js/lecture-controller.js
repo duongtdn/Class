@@ -168,7 +168,12 @@ function LectureCtrl($scope, Flow, Video){
 
 	$scope.isCompleteTopic = function (id) {
 		var tid = id,
-		    progress = $scope.progress[$scope.lid];;
+		    progress = $scope.progress[$scope.lid];
+
+		if ( eUtil.isEmpty(progress[tid]) ) {
+			return false;
+		}
+
 		for (var sid in progress[tid]) {
 			if (progress[tid][sid] !== 1) {
 				return false;
@@ -189,7 +194,7 @@ function LectureCtrl($scope, Flow, Video){
 		var a = id.split("."),
 		    tid = a[0],
 				sid = a[1];
-		
+
 		return $scope.current.tid === parseInt(tid,10) &&
 		       $scope.current.sid === parseInt(sid,10);
 	};

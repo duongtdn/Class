@@ -1,47 +1,62 @@
 {
-	"name" : "Lesson 2",
+	"name" : "Lecture 2",
 	"snippet" : "Data type and Operators",
-	"next" : "0",
+	"next" : "3",
 	"topic" : [
 		{
 			"id": 1,
-            "name": "Introduction to Verilog",
+      "name": "Introduction to Coding Style",
 			"scene": [
 				{
 					"seq": 1,
-                    "type":"youtube",
-                    "src": "X6a9odk6b_c",
-                    "next": 2,
-                    "previous": 0
+					"name" : "Skyrim themesong: the Dragonborn comes",
+          "type":"youtube",
+          "src": "XQMnT9baoi8"
 				},
 				{
-                    "seq": 2,
-                    "type":"youtube",
-                    "src": "ZgSCNS851Rg",
-                    "next": 5,
-                    "previous": 2
-                }
+            "seq": 2,
+						"name" : "Games of Thrones themesong",
+            "type":"youtube",
+            "src": "ZgSCNS851Rg"
+        },
+				{
+					"seq": 3,
+            "type":"youtube",
+						"name" : "Whatever You like",
+            "src": "ASj81daun5Q"
+				}
 			]
 		},
 		{
 			"id": 2,
-            "name": "Introduction to Verilog",
+            "name": "Understanding Data Types",
+			"scene": [
+				{
+            "seq": 1,
+            "type":"youtube",
+						"name" : "Physical model perspective: Reg vs. Net",
+            "src": "JxPj3GAYYZ0"
+        }
+			]
+		},
+		{
+			"id": 3,
+            "name": "Procedural Assigment",
 			"scene": [
 				{
 					"seq": 1,
-                    "type":"youtube",
-                    "src": "X6a9odk6b_c",
-                    "next": 2,
-                    "previous": 0
+					"name" : "Concurrent modleling of Verilog",
+          "type":"youtube",
+          "src": "X6a9odk6b_c"
 				},
 				{
-                    "seq": 2,
-                    "type":"youtube",
-                    "src": "ZgSCNS851Rg",
-                    "next": 5,
-                    "previous": 2
-                }
+            "seq": 2,
+						"name" : "Parallel Modelling",
+            "type":"youtube",
+            "src": "ZgSCNS851Rg"
+        }
 			]
 		}
+
 	]
 }
